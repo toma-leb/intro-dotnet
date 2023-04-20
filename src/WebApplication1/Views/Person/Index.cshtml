@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Person Page";
+}
+
+<div class="row">
+
+    @model List<DataProvider.Person>
+
+    <table>
+        <tr>
+            <th>PersonId</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Age</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.PersonId.ToString()</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Age.ToString()</td>
+            </tr>
+        }
+    </table>
+</div>
