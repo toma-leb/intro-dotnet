@@ -3,6 +3,45 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @model List<DataProvider.Person>
+    @using DataProvider
+
+    <table>
+        <tr>
+            <th>PersonId</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Age</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PersonId.ToString()</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Age.ToString()</td>
+            </tr>
+        }
+    </table>
+
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        <div>
+            <p>PersonId</p>
+            <input type="text" name="PersonId" id="PersonId" />
+        </div>
+        <div>
+            <p>FirstName</p>
+            <input type="text" name="FirstName" id="FirstName" />
+        </div>
+        <div>
+            <p>LastName</p>
+            <input type="text" name="LastName" id="LastName" />
+        </div>
+        <div>
+            <p>Age</p>
+            <input type="text" name="Age" id="Age" />
+        </div>
+        <button type="submit">Subscribe</button>
+    }
 </div>
