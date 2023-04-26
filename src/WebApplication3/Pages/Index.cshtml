@@ -1,10 +1,49 @@
 ﻿@page
+@using DataProvider
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
+@inject DataProvider.IPersonRepository Repository;
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <table>
+        <tr>
+            <th>PersonId</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Age</th>
+        </tr>
+        @foreach (var item in Repository.GetAll())
+        {
+            <tr>
+                <td>@item.PersonId.ToString()</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Age.ToString()</td>
+                <td>
+                    <a asp-page"./Edit" asp-route-id="@item.PersonId.ToString()">Edit</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+@*    @using (Html.BeginForm(FormMethod.Post))
+    {
+        <div>
+            <p>PersonId</p>
+            <input type="text" name="PersonId" id="PersonId" />
+        </div>
+        <div>
+            <p>FirstName</p>
+            <input type="text" name="FirstName" id="FirstName" />
+        </div>
+        <div>
+            <p>LastName</p>
+            <input type="text" name="LastName" id="LastName" />
+        </div>
+        <div>
+            <p>Age</p>
+            <input type="text" name="Age" id="Age" />
+        </div>
+        <button type="submit">Subscribe</button>
+    }*@
 </div>
+
