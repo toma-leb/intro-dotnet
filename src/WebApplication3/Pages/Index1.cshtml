@@ -1,0 +1,11 @@
+﻿@page "{personId:string?}"
+@using DataProvider
+@model EditModel
+@inject DataProvider.IPersonRepository Repository;
+
+<div class="text-center">
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        Html.TextBoxFor(model => model.pers);
+    }
+</div>
